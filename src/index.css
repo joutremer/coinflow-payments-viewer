@@ -1,0 +1,385 @@
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #0f172a;
+  background-color: #f8fafc;
+}
+
+.paysafe{
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.app-subtitle {
+  margin: 0;
+  color: #475569;
+  max-width: 640px;
+}
+
+.totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.app-main {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow:
+    0 10px 15px -3px rgba(15, 23, 42, 0.1),
+    0 4px 6px -4px rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(248, 131, 121, 0.3);
+}
+
+.alert.error {
+  background: rgba(248, 113, 113, 0.12);
+  color: #b91c1c;
+}
+
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.filters-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.filters-field select,
+.filters-field input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5f5;
+  min-width: 180px;
+  font-size: 0.95rem;
+}
+
+.filters-field.grow {
+  flex: 1;
+  min-width: 240px;
+}
+
+.filters-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+button.primary,
+button.secondary {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button.primary {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.24);
+}
+
+button.primary:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+button.secondary {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+button.primary:hover:not(:disabled),
+button.secondary:hover {
+  transform: translateY(-1px);
+}
+
+.table-wrapper {
+  overflow: auto;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+thead {
+  background: #f1f5f9;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.index-cell {
+  width: 3rem;
+  color: #475569;
+}
+
+tbody tr.selectable {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+tbody tr.selectable:hover {
+  background: #eef2ff;
+}
+
+tbody tr.selected {
+  background: #e0e7ff;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-pending {
+  background: rgba(253, 224, 71, 0.18);
+  color: #ca8a04;
+}
+
+.status-completed {
+  background: rgba(74, 222, 128, 0.18);
+  color: #15803d;
+}
+
+.status-failed {
+  background: rgba(248, 113, 113, 0.18);
+  color: #b91c1c;
+}
+
+.status-refunded {
+  background: rgba(59, 130, 246, 0.18);
+  color: #1d4ed8;
+}
+
+.method-card {
+  background: rgba(14, 165, 233, 0.18);
+  color: #0369a1;
+}
+
+.method-bank_transfer {
+  background: rgba(99, 102, 241, 0.18);
+  color: #4338ca;
+}
+
+.method-crypto {
+  background: rgba(244, 114, 182, 0.18);
+  color: #be185d;
+}
+
+.method-cash_app {
+  background: rgba(16, 185, 129, 0.18);
+  color: #047857;
+}
+
+.method-apple_pay {
+  background: rgba(15, 23, 42, 0.1);
+  color: #0f172a;
+}
+
+.table-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 1rem;
+  color: #475569;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid rgba(148, 163, 184, 0.4);
+  border-top-color: #3b82f6;
+  animation: spin 1s linear infinite;
+}
+
+.mono {
+  font-family: 'Fira Code', 'Roboto Mono', ui-monospace, SFMono-Regular,
+    SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  font-size: 0.9rem;
+}
+
+.customer-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-name {
+  font-weight: 600;
+}
+
+.customer-meta {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.secondary-text {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+button {
+  font: inherit;
+}
+
+.details-panel {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.details-panel h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.details-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  min-height: 90px;
+}
+
+.details-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.details-placeholder {
+  color: #64748b;
+}
+
+.details-error {
+  color: #b91c1c;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.pagination-summary {
+  color: #475569;
+  font-weight: 500;
+}
+
+.pagination-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pagination-page {
+  font-weight: 600;
+  color: #1f2937;
+}
+
