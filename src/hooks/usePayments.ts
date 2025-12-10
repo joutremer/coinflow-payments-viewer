@@ -11,6 +11,7 @@ import type {
 import { COINFLOW_MERCHANT_ID } from '../config'
 
 const PAGE_SIZE = 50
+const SEARCH_LIMIT = 500
 
 export interface PaymentsFilterState {
   search: string
@@ -84,6 +85,8 @@ export function usePayments(filters: PaymentsFilterState): UsePaymentsResult {
       setError(null)
 
       try {
+        const trimmedSearch = filters.search.trim()
+        const isSearching = trimmedSearch.length > 0
         const sinceMs = filters.since
           ? new Date(`${filters.since}T00:00:00Z`).getTime().toString()
           : undefined
@@ -92,15 +95,15 @@ export function usePayments(filters: PaymentsFilterState): UsePaymentsResult {
           : undefined
 
         const apiResponse = await fetchPayments({
-          search: filters.search.trim() || undefined,
+          search: isSearching ? undefined : trimmedSearch || undefined,
           status: filters.status === 'all' ? undefined : filters.status,
           method: filters.method === 'all' ? undefined : filters.method,
           blockchain: filters.blockchain === 'all' ? undefined : filters.blockchain,
           since: sinceMs,
           until: untilMs,
           merchantId: COINFLOW_MERCHANT_ID,
-          page: filters.page,
-          limit: PAGE_SIZE,
+          page: isSearching ? 1 : filters.page,
+          limit: isSearching ? SEARCH_LIMIT : PAGE_SIZE,
           sortBy: 'createdAt',
           sortDirection: -1,
         })
@@ -111,7 +114,7 @@ export function usePayments(filters: PaymentsFilterState): UsePaymentsResult {
 
         const normalized = apiResponse.map(toUiRow)
         setRows(normalized)
-        setHasNextPage(normalized.length === PAGE_SIZE)
+        setHasNextPage(!isSearching && normalized.length === PAGE_SIZE)
       } catch (err) {
         if (cancelled) {
           return
