@@ -120,7 +120,7 @@ export function usePayments(filters: PaymentsFilterState): UsePaymentsResult {
           return
         }
 
-        console.warn('Failed to fetch payments, falling back to mock data', err)
+        console.warn('Failed to fetch payments', err)
 
         const message =
           err instanceof Error ? err.message : 'Unknown error fetching payments'

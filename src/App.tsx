@@ -62,9 +62,7 @@ function App() {
           className="paysafe"
           width={200}
           height={200}
-          style={{ objectFit: 'contain' }}
-          
-        />
+          style={{ objectFit: 'contain' }}/>
         <h1>Paysafe Payments Viewer</h1>
       </header>
 
